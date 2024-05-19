@@ -1,0 +1,95 @@
+<div class="container">
+    <h1><mat-icon>account_circle</mat-icon> {{name}}</h1>
+    <mat-divider></mat-divider>
+    <section>
+        <h2>Sobre mí</h2>
+        <p>{{aboutMe}}</p>
+        <section class="extra">
+            <div>
+                <h3>Habilidades</h3>
+                <mat-list>
+                    @for (technology of technologicList; track $index) {
+                    <mat-list-item>
+                        <span matListItemTitle>
+                            {{technology.name}}
+                        </span>
+                        <span matListItemLine>
+                            {{technology.level}}
+                        </span>
+                    </mat-list-item>
+                    }
+                </mat-list>
+            </div>
+            <div class="line-rigth">
+                <h3>Contacto</h3>
+                <mat-list>
+                    <mat-list-item>
+                        <span matListItemTitle>
+                            Teléfono: 
+                        </span>
+                        {{phone}}
+                    </mat-list-item>
+                    <mat-list-item>
+                        <span matListItemTitle>
+                            E-mail: 
+                        </span>
+                        {{email}}
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </section>
+    </section>
+    <mat-divider></mat-divider>
+    <section>
+        <h2>Experiencia laboral</h2>
+        <mat-list>
+            @for (job of workExperienceList; track $index) {
+            <mat-list-item>
+                <span matListItemTitle>
+                    {{job.job}}
+                </span>
+                <span matListItemMeta>
+                    {{job.year}}
+                </span>
+                <span matListItemLine>
+                    {{job.company}}
+                </span>
+            </mat-list-item>
+            }
+        </mat-list>
+    </section>
+    <mat-divider></mat-divider>
+    <section>
+        <h2>Educación</h2>
+        <mat-list>
+            @for (education of educationList; track $index) {
+            <mat-list-item>
+                <span matListItemMeta>
+                    {{education.date}}
+                </span>
+                <span matListItemTitle>
+                    {{education.name}}
+                </span>
+                @if (education.title) {
+                <span matListItemLine>
+                    {{education.title}}
+                </span>
+                }</mat-list-item>
+            }
+        </mat-list>
+        <h3>Idiomas</h3>
+        <mat-list>
+            @for (language of languageList; track $index) {
+            <mat-list-item>
+                <span matListItemTitle>
+                    {{language.name}}
+                </span>
+                <span matListItemLine>
+                    {{language.level}}
+                </span>
+            </mat-list-item>
+            }
+        </mat-list>
+    </section>
+    <mat-divider></mat-divider>
+</div>

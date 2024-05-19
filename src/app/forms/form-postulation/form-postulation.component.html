@@ -1,0 +1,106 @@
+<div class="container">
+    <h2 mat-dialog-title>Formulario postulación</h2>
+    <mat-dialog-content>
+        <mat-stepper [linear]="true" #stepper orientation="vertical">
+            <mat-step [stepControl]="firstForm">
+                <form class="form" [formGroup]="firstForm">
+                    <ng-template matStepLabel>Información personal</ng-template>
+                    <mat-form-field>
+                        <mat-label>Nombre</mat-label>
+                        <input type="text" matInput formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Correo eléctronico</mat-label>
+                        <input type="email" matInput formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Teléfono</mat-label>
+                        <input type="tel" matInput formControlName="phone">
+                    </mat-form-field>
+                    <button type="button" mat-button matStepperNext>Siguiente</button>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondForm" label="Información laboral">
+                <form class="form" [formGroup]="secondForm">
+                    <mat-form-field>
+                        <mat-label>Empresa</mat-label>
+                        <input type="text" matInput formControlName="company">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Cargo</mat-label>
+                        <input type="text" matInput formControlName="job">
+                    </mat-form-field><mat-form-field>
+                        <mat-label>Fecha de inicio</mat-label>
+                        <input matInput formControlName="initDate" [matDatepicker]="startPickerJob">
+                        <mat-datepicker-toggle matIconSuffix [for]="startPickerJob"></mat-datepicker-toggle>
+                        <mat-datepicker #startPickerJob></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Fecha de término</mat-label>
+                        <input matInput formControlName="endDate" [matDatepicker]="endPickerJob">
+                        <mat-datepicker-toggle matIconSuffix [for]="endPickerJob"></mat-datepicker-toggle>
+                        <mat-datepicker #endPickerJob></mat-datepicker>
+                    </mat-form-field>
+                    <!--TODO cuando se añada otro trabajo listarlo aquí ordernarlo por fecha desde el más actual al más antiguo-->
+                    <button mat-button type="button">Añadir otro trabajo</button>
+                    <button type="button" mat-button matStepperNext>Siguiente</button>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="thirdForm" label="Información Educacional">
+                <form class="form" [formGroup]="thirdForm">
+                    <mat-form-field>
+                        <mat-label>Institución</mat-label>
+                        <input type="text" matInput formControlName="school">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Título</mat-label>
+                        <input type="text" matInput formControlName="certificate">
+                    </mat-form-field><mat-form-field>
+                        <mat-label>Fecha de inicio</mat-label>
+                        <input matInput formControlName="initDate" [matDatepicker]="startPicker">
+                        <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #startPicker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Fecha de término</mat-label>
+                        <input matInput formControlName="endDate" [matDatepicker]="endPicker">
+                        <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #endPicker></mat-datepicker>
+                    </mat-form-field>
+                    <!--TODO cuando se añada otra casa de estudio listarlo aquí ordernarlo por fecha desde el más actual al más antiguo-->
+                    <button mat-button type="button">Añadir otra institución</button>
+                    <button type="button" mat-button matStepperNext>Siguiente</button>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="fourthForm" label="Información Extra">
+                <form class="form" [formGroup]="fourthForm">
+                    <mat-form-field>
+                        <mat-label>Cuéntanos algo sobre ti</mat-label>
+                        <textarea matInput formControlName="description"></textarea>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Selecciona un idioma</mat-label>
+                        <mat-select formControlName="language">
+                            @for (language of languageList; track $index) {
+                            <mat-option [value]="language.name">{{language.name}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Nivel Hablado</mat-label>
+                        <mat-select formControlName="level">
+                            @for (level of levelList; track $index) {
+                            <mat-option [value]="level.value">{{level.value}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-button>Añadir otro idioma</button>
+                    <!--TODO cuando se añada otro idioma listarlo aquí ordernarlo por nivel-->
+                </form>
+            </mat-step>
+        </mat-stepper>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="[firstForm.value, secondForm.value, thirdForm.value, fourthForm.value]">Enviar</button>
+    </mat-dialog-actions>
+</div>
