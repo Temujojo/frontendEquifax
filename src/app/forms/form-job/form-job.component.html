@@ -1,0 +1,28 @@
+<div class="container">
+    <h2 mat-dialog-title>Formulario puesto</h2>
+    <mat-dialog-content>
+        <form class="form" [formGroup]="form">
+            <mat-form-field>
+                <mat-label>Título</mat-label>
+                <input type="text" matInput formControlName="title">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Tecnologías</mat-label>
+                <input type="text" matInput formControlName="technologies">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Resumen del trabajo</mat-label>
+                <textarea matInput formControlName="descripción"></textarea>
+            </mat-form-field>
+            <mat-label>Publicar con estado</mat-label>
+            <mat-radio-group formControlName="status" color="primary">
+                <mat-radio-button [value]="false">Cerrado</mat-radio-button>
+                <mat-radio-button [value]="true">Abierto</mat-radio-button>
+            </mat-radio-group>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button [mat-dialog-close]="" color="accent">Cancelar</button>
+        <button mat-raised-button [mat-dialog-close]="form.value" color="primary">Enviar</button>
+    </mat-dialog-actions>
+</div>
