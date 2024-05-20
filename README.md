@@ -1,5 +1,19 @@
 # FrontendEquifax
 
+## Pre requisitos 
+- Node.js 18.20.1 [link](https://nodejs.org/en/blog/release/v18.20.1)
+- Angular cli `npm i -g @angular/cli`
+
+## Como incializar el proyecto
+Instalar la version de node indicada anteriormente, 
+Instalar mediante la consola Angular cli, `npm i -g @angular/cli`
+Luego de clonar repositiorio, en la consola deberémos estar dentro del proyecto 'frontendEquifax' y utilizar el comando `npm i` para que se instalen todas las dependencias que necesitará el proyecto de Angular
+Finalizado el paso anterior puede levantar la aplicación con `ng serve -o`
+
+##Información de Versión 0.0.1
+Se han dejado deshabilitado los botónes que no tienen, ninguna función.
+Para hacer uso de estos se debe quitar el atriburto disable en `src/app/shared/toolbar/toolbar.component.html`
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
 ## Development server
