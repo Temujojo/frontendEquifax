@@ -1,0 +1,13 @@
+.toolbar{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: fit-content;
+    min-height: 64px;
+    margin-bottom: 15px;
+
+    div{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
