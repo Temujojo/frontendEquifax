@@ -1,11 +1,11 @@
 <mat-toolbar color="primary" class="toolbar mat-elevation-z10">
     <div>
-        <button mat-button [routerLink]="'/'">Lista</button>
-        <button mat-button [routerLink]="'/candidatos/.'">Candidatos</button>
+        <button mat-button [routerLink]="'/'" disabled>Lista</button>
+        <button mat-button [routerLink]="'/candidatos/.'" disabled>Candidatos</button>
         <button mat-button [routerLink]="'/postulaciones/.'">Postulaciones</button>
     </div>
     <div>
         <button mat-button (click)="openDialog('job')">Formulario puesto</button>
-        <button mat-button (click)="openDialog('postulation')">Formulario postulación</button>
+        <button mat-button (click)="openDialog('postulation')" disabled>Formulario postulación</button>
     </div>
 </mat-toolbar>
