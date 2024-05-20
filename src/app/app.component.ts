@@ -5,6 +5,7 @@ import { FormService } from './services/subscribe.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FormJobComponent } from './forms/form-job/form-job.component';
 import { FormPostulationComponent } from './forms/form-postulation/form-postulation.component';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,10 @@ import { FormPostulationComponent } from './forms/form-postulation/form-postulat
 })
 export class AppComponent implements OnInit {
 
-  constructor(private formService: FormService,
-    public dialog: MatDialog
+  constructor(
+    private formService: FormService,
+    public dialog: MatDialog,
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
@@ -37,8 +40,8 @@ export class AppComponent implements OnInit {
         dialogRef = this.dialog.open(FormJobComponent, {
           maxWidth: '350px',
           minWidth: '',
-          maxHeight:'500px',
-          minHeight:'',
+          maxHeight: '500px',
+          minHeight: '',
           hasBackdrop: true,
           autoFocus: false,
           disableClose: true,
@@ -61,7 +64,20 @@ export class AppComponent implements OnInit {
     if (dialogRef) {
       dialogRef.afterClosed().subscribe({
         next: (res) => {
-          console.log(res);
+          if (res?.form === 'job' && res?.title !== '') {
+            const body = res;
+            const date = new Date
+            body['published'] = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+            this.apiService.createJob(body).subscribe({
+              next: (res) => {
+                console.log(res);
+              }, error: (err) => {
+                console.error(err);
+              }
+            })
+          }
+        }, error: (err) => {
+          console.error(err);
         }
       })
     }
