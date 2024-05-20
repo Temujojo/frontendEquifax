@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
 
 interface ICandidate {
   name: string;
@@ -12,7 +13,7 @@ interface ICandidate {
 const ELEMENT_DATA: ICandidate[] = [
   {
     name: 'Ramón Faúndez',
-    job:'Fullstack',
+    job: 'Fullstack',
     status: 'Aceptado',
     applicationDate: '2024-05-12'
   }, {
@@ -25,7 +26,7 @@ const ELEMENT_DATA: ICandidate[] = [
     job: 'FullStack',
     status: 'Aceptado',
     applicationDate: '2024-05-12'
-  },{
+  }, {
     name: 'Rodolfo Ahumada',
     job: 'Frontend',
     status: 'Rechazado',
@@ -36,11 +37,11 @@ const ELEMENT_DATA: ICandidate[] = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatTableModule, DatePipe],
+  imports: [MatTableModule, DatePipe, MatDividerModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  public displayedColumns: string[] = ['name','job','status','applicationDate'];
+  public displayedColumns: string[] = ['name', 'job', 'status', 'applicationDate'];
   public dataSource = ELEMENT_DATA;
 }

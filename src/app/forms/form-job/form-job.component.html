@@ -8,11 +8,15 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Tecnologías</mat-label>
-                <input type="text" matInput formControlName="technologies">
+                <mat-select formControlName="technologies">
+                    @for (item of technologiesList; track $index) {
+                        <mat-option [value]="item.id">{{item.name}}</mat-option>
+                    }
+                </mat-select>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Resumen del trabajo</mat-label>
-                <textarea matInput formControlName="descripción"></textarea>
+                <textarea matInput formControlName="description"></textarea>
             </mat-form-field>
             <mat-label>Publicar con estado</mat-label>
             <mat-radio-group formControlName="status" color="primary">
@@ -22,7 +26,7 @@
         </form>
     </mat-dialog-content>
     <mat-dialog-actions>
-        <button mat-raised-button [mat-dialog-close]="" color="accent">Cancelar</button>
-        <button mat-raised-button [mat-dialog-close]="form.value" color="primary">Enviar</button>
+        <button mat-raised-button mat-dialog-close color="accent">Cancelar</button>
+        <button mat-raised-button [mat-dialog-close]="form.value" [disabled]="form.invalid" color="primary">Enviar</button>
     </mat-dialog-actions>
 </div>
